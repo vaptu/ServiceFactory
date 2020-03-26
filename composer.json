@@ -1,5 +1,5 @@
 {
-  "name": "vaptu/ServiceFactory",
+  "name": "vaptu/service-factory",
   "description": "consul service factory",
   "keywords": [
     "registry",
@@ -7,7 +7,7 @@
     "etcd",
     "consul"
   ],
-  "homepage": "https://github.com/vaptu/ServiceFactory",
+  "homepage": "https://github.com/vaptu/service-factory",
   "license": "MIT",
   "type": "library",
   "authors": [
