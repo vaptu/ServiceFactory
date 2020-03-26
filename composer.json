@@ -18,7 +18,10 @@
   ],
   "require": {
     "php": ">=7.0",
-    "sensiolabs/consul-php-sdk": "^3.1"
+    "sensiolabs/consul-php-sdk": "^3.1",
+    "guzzlehttp/guzzle": "^6.5",
+    "ext-json": "*",
+    "start-point/etcd-php": "^1.1"
   },
   "autoload": {
     "classmap": [

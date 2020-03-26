@@ -8,4 +8,6 @@ abstract class ServiceFactoryInterface
     }
 
     abstract public function Service(string $service_name, $filter = []);
+
+    abstract public function AgentAddress();
 }

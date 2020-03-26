@@ -3,6 +3,7 @@
 namespace ServiceFactory\Consul;
 
 use SensioLabs\Consul\ServiceFactory;
+use ServiceFactory\Exception\ServiceFactoryException;
 use ServiceFactory\ServiceFactoryInterface;
 
 const SERVICE_STATUS_PASSING = "passing";
@@ -10,17 +11,33 @@ const SERVICE_STATUS_PASSING = "passing";
 class ServiceFactoryConsul extends ServiceFactoryInterface
 {
     protected $service = null;
+    protected $client  = null;
+
+    /**
+     * ServiceFactoryConsul constructor.
+     *
+     * @param string $host
+     */
+    function __construct($host = "127.0.0.1:8500"){
+        parent::__construct();
+
+        $protocol = strpos($host, "http");
+        if($protocol === false || $protocol > 0){
+            $host = "http://$host";
+        }
+
+        $this->client = new ServiceFactory(['base_uri' => $host]);
+    }
 
     /**
      * @param string $service_name
      * @param array  $filter
      *
      * @return $this
-     * @throws Throwable
+     * @throws ServiceFactoryException
      */
     public function Service(string $service_name, $filter = []){
-        $sf = new ServiceFactory();
-        $health = $sf->get('health');
+        $health = $this->client->get('health');
         $services_body = $health->service($service_name);
         $services = json_decode($services_body->getBody());
         if(is_array($services)){
@@ -38,6 +55,10 @@ class ServiceFactoryConsul extends ServiceFactoryInterface
         return $this;
     }
 
+    /**
+     * @return string
+     * @throws ServiceFactoryException
+     */
     public function AgentAddress(){
         if($this->service === null){
             throw new ServiceFactoryException("service not initialize", 2);
