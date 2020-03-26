@@ -1,8 +1,8 @@
 <?php
 
-namespace Consul\ServiceFactory;
+namespace ServiceFactory;
 
-use Consul\ServiceFactory\Exception\ServiceFactoryException;
+use ServiceFactory\Exception\ServiceFactoryException;
 use ServiceFactory\Consul\ServiceFactoryConsul;
 
 class ServiceFactory

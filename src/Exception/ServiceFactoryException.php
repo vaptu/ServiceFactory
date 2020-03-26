@@ -1,6 +1,6 @@
 <?php
 
-namespace Consul\ServiceFactory\Exception;
+namespace ServiceFactory\Exception;
 
 class ServiceFactoryException extends Exception
 {
