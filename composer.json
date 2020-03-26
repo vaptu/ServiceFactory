@@ -1,0 +1,20 @@
+{
+    "name": "vaptu/ConsulServiceFactory",
+    "description": "consul service factory",
+    "type": "library",
+    "authors": [
+        {
+            "name": "vaptu",
+            "email": "vaptu@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "sensiolabs/consul-php-sdk": "^3.1"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    }
+}
