@@ -27,5 +27,19 @@
     "classmap": [
       "src"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "vaptu/service-factory",
+        "version": "1.1.0",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/vaptu/service-factory",
+          "reference": "1.1.0"
+        }
+      }
+    }
+  ]
 }
