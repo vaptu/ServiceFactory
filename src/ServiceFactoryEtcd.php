@@ -28,6 +28,10 @@ class ServiceFactoryEtcd extends ServiceFactoryInterface
 
     public function Service(string $service_name, $filter = []){
         $response = $this->client->getKeysWithPrefix(GO_MICRO_SERVICE_PREFIX . $service_name);
+        if(!isset($response['kvs'])){
+            throw new ServiceFactoryException("service not found", 1);
+        }
+
         $services = $response['kvs'];
         foreach($services as $key => $value){
             $service_config = json_decode($value['value']);
