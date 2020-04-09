@@ -8,7 +8,7 @@ use ServiceFactory\ServiceFactoryInterface;
 
 const GO_MICRO_SERVICE_PREFIX = "/micro/registry/";
 
-class ServiceFactoryEtcd extends ServiceFactoryInterface
+class ServiceFactoryEtcd implements ServiceFactoryInterface
 {
     protected $service = null;
 
@@ -19,11 +19,14 @@ class ServiceFactoryEtcd extends ServiceFactoryInterface
     /**
      * ServiceFactoryEtcd constructor.
      *
-     * @param string $host
+     * @param $host
+     * @param $port
      */
-    public function __construct($host = "127.0.0.1:2379"){
-        parent::__construct();
-        $this->client = new \Etcd\Client($host, "v3");
+    public function __construct($host = null, $port = null){
+        $host = $host ?? "127.0.0.1";
+        $port = $port ?? "2379";
+
+        $this->client = new \Etcd\Client(sprintf("%s:%s", $host, $port), "v3");
     }
 
     public function Service(string $service_name, $filter = []){

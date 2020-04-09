@@ -2,12 +2,9 @@
 
 namespace ServiceFactory;
 
-abstract class ServiceFactoryInterface
+interface ServiceFactoryInterface
 {
-    public function __construct(){
-    }
+    public function Service(string $service_name, $filter = []);
 
-    abstract public function Service(string $service_name, $filter = []);
-
-    abstract public function AgentAddress();
+    public function AgentAddress();
 }

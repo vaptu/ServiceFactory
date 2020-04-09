@@ -8,7 +8,7 @@ use ServiceFactory\ServiceFactoryInterface;
 
 const SERVICE_STATUS_PASSING = "passing";
 
-class ServiceFactoryConsul extends ServiceFactoryInterface
+class ServiceFactoryConsul implements ServiceFactoryInterface
 {
     protected $service = null;
     protected $client  = null;
@@ -18,10 +18,11 @@ class ServiceFactoryConsul extends ServiceFactoryInterface
      *
      * @param string $host
      */
-    function __construct($host = "127.0.0.1:8500"){
-        parent::__construct();
+    function __construct($host, $port){
+        $host = $host ?? "127.0.0.1";
+        $port = $port ?? "8500";
 
-        $protocol = strpos($host, "http");
+        $protocol = strpos(sprintf("%s:%s", $host, $port), "http");
         if($protocol === false || $protocol > 0){
             $host = "http://$host";
         }
