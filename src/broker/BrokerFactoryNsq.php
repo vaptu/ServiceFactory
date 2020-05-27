@@ -30,6 +30,6 @@ class BrokerFactoryNsq implements BrokerFactoryInterface
         ]);
 
         $re = $response->getBody();
-        printf($re);
+        return $re;
     }
 }
